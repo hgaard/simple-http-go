@@ -3,6 +3,8 @@ version: '3.7'
 services:
   apiserver:
     build: .
+    environment:
+      SEQ_URL: http://seq:5341
     ports:
       - "5000:8080"
     depends_on:
