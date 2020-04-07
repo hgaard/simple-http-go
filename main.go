@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	log.AddHook(logruseq.NewSeqHook("http://localhost:5341"))
+	log.AddHook(logruseq.NewSeqHook("http://seq:5341"))
 }
 
 func main() {
