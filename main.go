@@ -18,12 +18,20 @@ func main() {
 	n := negroni.New()
 	mux := http.NewServeMux()
 	n.UseHandler(mux)
-	n.Use(negroni.HandlerFunc(MyMiddleware))
+
+	rl := NewRequestRecorder()
+
+	n.Use(NewRequestLogger(rl))
 
 	mux.HandleFunc("/", HelloServer)
 	mux.HandleFunc("/api", ApiServer)
+
+	ls := NewLogsServer(rl)
+	mux.HandleFunc("/logs", ls.getRequestLog)
 
 	http.ListenAndServe(":8080", n)
 
 	log.Info("Closing down.. bye!")
 }
+
+
