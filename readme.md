@@ -7,7 +7,12 @@ This repo is just me keeping track of what I have done learning Go and reminding
     - [x] Add test (apiserver_test.go)
     - [ ] Add Swagger
  - [ ] Request logger + log endpoint
+    - [x] Simple middleware
+    - [ ] Capture all calls to all endpoints in "list"
+    - [ ] Add endpoint to return "list" of all calls
+ - [ ] CI/CD
+    - [ ] CircleCI
  - [ ] Add auth
     - [ ] Google/Facebook/Microsoft
-  - [ ] DB Crud
-  - [ ] Email/sms (include worker role)
+ - [ ] DB Crud
+ - [ ] Email/sms (include worker role)
