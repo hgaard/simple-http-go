@@ -1,14 +1,27 @@
 package main
 
 import (
+	"fmt"
+	"net/http"
+	"os"
+
 	"github.com/nullseed/logruseq"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
-	"net/http"
 )
 
+// https://stackoverflow.com/a/40326580
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
 func init() {
-	log.AddHook(logruseq.NewSeqHook("http://localhost:5341"))
+	seqURL := getEnv("SEQ_URL", "http://localhost:5341")
+	fmt.Printf("Logging to SEQ_URL '%s'\n", seqURL)
+	log.AddHook(logruseq.NewSeqHook(seqURL))
 }
 
 func main() {
@@ -33,5 +46,3 @@ func main() {
 
 	log.Info("Closing down.. bye!")
 }
-
-
