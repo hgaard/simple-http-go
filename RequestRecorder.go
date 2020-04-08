@@ -1,23 +1,30 @@
 package main
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"time"
+)
+
+type RequestRecord struct {
+	Request string
+	Timing  time.Duration
+}
 
 type RequestRecorder struct {
-	requests []string
+	requests []RequestRecord
 }
 
-func NewRequestRecorder() *RequestRecorder{
+func NewRequestRecorder() *RequestRecorder {
 	r := &RequestRecorder{}
-return r
+	return r
 }
 
-func (r *RequestRecorder) add (request string){
+func (r *RequestRecorder) add(request RequestRecord) {
 	r.requests = append(r.requests, request)
 }
 
-func (r *RequestRecorder) toJson () ([]byte, error){
+func (r *RequestRecorder) toJson() ([]byte, error) {
 	js, err := json.Marshal(r.requests)
-	return js,err
+
+	return js, err
 }
-
-
