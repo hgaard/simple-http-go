@@ -25,6 +25,5 @@ func (r *RequestRecorder) add(request RequestRecord) {
 
 func (r *RequestRecorder) toJson() ([]byte, error) {
 	js, err := json.Marshal(r.requests)
-
 	return js, err
 }

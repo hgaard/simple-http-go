@@ -14,8 +14,11 @@ This repo is just me keeping track of what I have done learning Go and reminding
  - [x] CI/CD
     - [x] CircleCI
     - [x] Add CircleCI badge
- - [ ] Queue + worker role
- - [ ] DB Crud
+ - [x] Queue + worker role (rabbitMQ + worker directory)
+    -[ ] update docker compose
+ - [ ] DB 
+    - [ ] Store messages from worker
+    - [ ] Read messages from db in log server
  - [ ] Add auth
     - [ ] Google/Facebook/Microsoft
  - [ ] Add Swagger
