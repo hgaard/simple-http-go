@@ -11,8 +11,10 @@ This repo is just me keeping track of what I have done learning Go and reminding
     - [x] Add endpoint to return "list" of all calls (logs endpoint added)
  - [ ] CI/CD
     - [ ] CircleCI
+    - [ ] Add CircleCI badge
  - [ ] Add Swagger
  - [ ] Add auth
     - [ ] Google/Facebook/Microsoft
  - [ ] DB Crud
- - [ ] Email/sms (include worker role)
+ - [ ] Queue + worker role
+ - [ ] CLI
