@@ -1,5 +1,7 @@
 This repo is just me keeping track of what I have done learning Go and reminding me what I intend to do
 
+[![hgaard](https://circleci.com/gh/hgaard/simple-http-go.svg?style=shield)](https://circleci.com/gh/hgaard/workflows/simple-http-go)
+
  - [x] Simple web server (helloserver.go)
  - [x] Api server
     - [x] Api that returns something in JSON (apiserver.go)
@@ -9,12 +11,12 @@ This repo is just me keeping track of what I have done learning Go and reminding
     - [x] Simple middleware
     - [x] Capture all calls to all endpoints in "list" (Request recorder holds all requests)
     - [x] Add endpoint to return "list" of all calls (logs endpoint added)
- - [ ] CI/CD
-    - [ ] CircleCI
-    - [ ] Add CircleCI badge
- - [ ] Add Swagger
+ - [x] CI/CD
+    - [x] CircleCI
+    - [x] Add CircleCI badge
+ - [ ] Queue + worker role
+ - [ ] DB Crud
  - [ ] Add auth
     - [ ] Google/Facebook/Microsoft
- - [ ] DB Crud
- - [ ] Queue + worker role
+ - [ ] Add Swagger
  - [ ] CLI
