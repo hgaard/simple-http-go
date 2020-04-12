@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   apiserver:
-    build: .
+    build: ./server
     environment:
       SEQ_URL: http://seq:5341
     ports:
@@ -18,3 +18,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./data/seq:/data
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"

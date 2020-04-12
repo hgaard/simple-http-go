@@ -7,7 +7,7 @@ WORKDIR /go/src/simple-http-go
 
 # Copy the local package files to the container's workspace
 # in the above created WORKDIR
-ADD . .
+ADD .. .
 
 # Build the api-server inside the container
 RUN go build -o api-server
