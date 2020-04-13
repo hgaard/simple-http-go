@@ -42,7 +42,7 @@ func failOnError(err error, msg string) {
 }
 
 func send(record RequestRecord) {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbit:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 
