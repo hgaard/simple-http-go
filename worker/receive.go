@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"github.com/nullseed/logruseq"
+	log "github.com/sirupsen/logrus"
 	"github.com/streadway/amqp"
-	"log"
+	"os"
 )
 
 func failOnError(err error, msg string) {
@@ -11,8 +14,24 @@ func failOnError(err error, msg string) {
 	}
 }
 
+// https://stackoverflow.com/a/40326580
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
+func init() {
+	seqURL := getEnv("SEQ_URL", "http://localhost:5341")
+	fmt.Printf("Logging to SEQ_URL '%s'\n", seqURL)
+	log.AddHook(logruseq.NewSeqHook(seqURL))
+}
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	rabbit := getEnv("RABBIT_CONNECTION", "amqp://guest:guest@localhost:5672/")
+	log.Info("Rabbit connection to RABBIT_CONNECTION %s", rabbit)
+
+	conn, err := amqp.Dial(rabbit)
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 

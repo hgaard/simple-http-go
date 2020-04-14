@@ -1,15 +1,25 @@
 version: '3.7'
 
 services:
-  apiserver:
+  server:
     build: ./server
     environment:
       SEQ_URL: http://seq:5341
+      RABBIT_CONNECTION: amqp://guest:guest@rabbit:5672/
     ports:
       - "5000:8080"
     depends_on:
       - seq
       - rabbit
+  worker:
+    build: ./worker
+    environment:
+      SEQ_URL: http://seq:5341
+      RABBIT_CONNECTION: amqp://guest:guest@rabbit:5672/
+    depends_on:
+        - seq
+        - rabbit
+        - mongo
   seq:
     image: datalust/seq:latest
     ports:
