@@ -3,23 +3,15 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
+	"simple-http-server/logger"
 
 	"github.com/nullseed/logruseq"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
 )
 
-// https://stackoverflow.com/a/40326580
-func getEnv(key, fallback string) string {
-	if value, ok := os.LookupEnv(key); ok {
-		return value
-	}
-	return fallback
-}
-
 func init() {
-	seqURL := getEnv("SEQ_URL", "http://localhost:5341")
+	seqURL := logger.GetEnv("SEQ_URL", "http://localhost:5341")
 	fmt.Printf("Logging to SEQ_URL '%s'\n", seqURL)
 	log.AddHook(logruseq.NewSeqHook(seqURL))
 }
@@ -32,9 +24,9 @@ func main() {
 	mux := http.NewServeMux()
 	n.UseHandler(mux)
 
-	rl := NewRequestRecorder()
+	rl := logger.NewRequestRecorder()
 
-	n.Use(NewRequestLogger(rl))
+	n.Use(logger.NewRequestLogger(rl))
 
 	mux.HandleFunc("/", HelloServer)
 	mux.HandleFunc("/api", ApiServer)
