@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/nullseed/logruseq"
 	"net/http"
 	"simple-http-server/logger"
 
-	"github.com/nullseed/logruseq"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
 )
